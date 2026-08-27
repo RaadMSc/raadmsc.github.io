@@ -7,9 +7,8 @@
     <meta name="description" content="Raad Mahmood – Civil Engineer, MSc Structural Materials, specialising in geopolymer fire assessment, concrete admixtures, waterproofing, insulation, construction chemicals, and sustainable concrete." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <!-- ===== FAVICON (Updated for SVG in /images/) ===== -->
+    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <!-- Standard fallbacks -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -18,7 +17,7 @@
     <meta name="theme-color" content="#0b211d">
 
     <style>
-        /* ===== VARIABLES (same palette) ===== */
+        /* ===== VARIABLES ===== */
         :root {
             --cream: #f3f0e7;
             --cream-dark: #e7e3d8;
@@ -49,6 +48,8 @@
             background: var(--cream);
             color: var(--black);
             line-height: 1.6;
+            padding-top: 90px;
+            /* room for two-row header */;
         }
         a {
             color: inherit;
@@ -84,7 +85,6 @@
             user-drag: none;
         }
 
-        /* Subtle copyright watermark on gallery images */
         .gallery-item::after {
             content: "© Raad Mahmood";
             position: absolute;
@@ -99,47 +99,98 @@
             z-index: 2;
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER — TWO-ROW LAYOUT ===== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 72px;
-            background: rgba(243, 240, 231, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--line);
             z-index: 1000;
+            background: rgba(243, 240, 231, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0 8px 0;
+            min-height: 90px;
+        }
+
+        .header-row {
             display: flex;
             align-items: center;
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
         }
-        .nav {
+
+        /* --- Row 1: Navigation --- */
+        .header-nav-row {
+            justify-content: flex-end;
+            gap: 6px;
+            min-height: 34px;
+        }
+
+        .header-nav-row .nav-links {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
-        /* ===== HEADER BRAND ===== */
+
+        .header-nav-row .nav-links a {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.055em;
+            text-transform: uppercase;
+            color: var(--green);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .header-nav-row .nav-links a:hover,
+        .header-nav-row .nav-links a.active {
+            color: var(--orange);
+            border-bottom-color: var(--orange);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--green);
+            cursor: pointer;
+            padding: 4px 6px;
+            margin-left: auto;
+        }
+
+        /* --- Row 2: Logo / Name --- */
+        .header-logo-row {
+            justify-content: flex-start;
+            padding-top: 4px;
+            min-height: 46px;
+        }
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex: 0 0 210px;
-            width: 210px;
-            transform: translateX(-8px);
+            gap: 12px;
             font-weight: 700;
             color: var(--green);
         }
 
         .logo-mark {
-            width: 34px;
-            height: 34px;
-            flex: 0 0 34px;
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
             background: var(--green);
             color: var(--cream);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.02em;
             border-radius: 8px 2px 8px 2px;
@@ -159,147 +210,33 @@
         }
 
         .logo-text {
-            display: block;
-            min-width: 0;
-            line-height: 1.15;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
         }
 
         .logo-name {
             font-family: "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-            font-size: 1.02rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: -0.035em;
-            white-space: nowrap;
+            color: var(--green);
         }
 
         .logo-role {
-            display: block;
-            margin-top: 2px;
-            font-size: 0.54rem;
+            font-size: 0.58rem;
             letter-spacing: 0.105em;
             text-transform: uppercase;
             color: var(--muted);
             font-weight: 600;
-            white-space: nowrap;
+            margin-top: -1px;
         }
 
-        /* ===== MENU BUTTON BASE STYLING (Prevents browser quirks) ===== */
-        .menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            color: var(--green);
-            cursor: pointer;
-            padding: 5px;
-            margin-right: -5px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 17px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .nav-links a {
-            font-size: 0.66rem;
-            font-weight: 700;
-            letter-spacing: 0.055em;
-            text-transform: uppercase;
-            color: var(--green);
-            padding: 6px 0;
-            border-bottom: 2px solid transparent;
-            transition: color 0.2s, border-color 0.2s;
-            white-space: nowrap;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--orange);
-            border-bottom-color: var(--orange);
-        }
-
-        @media (max-width: 1200px) and (min-width: 1101px) {
-            .logo {
-                flex-basis: 185px;
-                width: 185px;
-            }
-            .nav-links {
-                gap: 12px;
-            }
-            .nav-links a {
-                font-size: 0.58rem;
-                letter-spacing: 0.045em;
-            }
-        }
-
-        /* ===== RESPONSIVE HEADER (Moved up to 1100px to prevent overlap on all browsers) ===== */
-        @media (max-width: 1100px) {
-            .logo {
-                flex-basis: auto;
-                width: auto;
-                transform: translateX(-4px);
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 72px;
-                left: 20px;
-                right: 20px;
-                flex-direction: column;
-                background: var(--cream);
-                padding: 20px;
-                border: 1px solid var(--line);
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
-                gap: 10px;
-            }
-            .nav-links.show {
-                display: flex;
-            }
-            .menu-btn {
-                display: block;
-            }
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 100px 0;
-        }
-        .section-label {
-            color: var(--orange);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .section-label::before {
-            content: "— ";
-        }
-        .section-title {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            font-weight: 500;
-            color: var(--green);
-            margin-bottom: 24px;
-        }
-        .section-description {
-            max-width: 700px;
-            color: var(--muted);
-            font-size: 0.95rem;
-            margin-bottom: 48px;
-        }
-
-        /* ===== HERO ===== */
+        /* ===== HERO (no big name title) ===== */
         .hero {
-            min-height: 100vh;
-            padding-top: 120px;
+            min-height: calc(100vh - 90px);
+            padding-top: 40px;
+            padding-bottom: 60px;
             background: var(--green);
             color: var(--cream);
             display: flex;
@@ -312,7 +249,7 @@
             position: absolute;
             inset: 0;
             background: url('images/hero-bg.jpg') center/cover no-repeat;
-            opacity: 0.12;
+            opacity: 0.10;
             pointer-events: none;
         }
         .hero-grid {
@@ -323,37 +260,75 @@
             position: relative;
             z-index: 2;
         }
-        .hero-content h1 {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(3.6rem, 8vw, 7.2rem);
-            line-height: 0.9;
-            letter-spacing: -0.05em;
-            font-weight: 500;
-            color: var(--cream);
-            margin-bottom: 24px;
-        }
-        .hero-content h1 span {
-            color: var(--orange);
-        }
-        .hero-sub {
-            font-size: 0.8rem;
+
+        .hero-content .hero-eyebrow {
+            font-size: 0.7rem;
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--orange);
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
+
+        .hero-content .hero-headline {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            font-weight: 500;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .hero-content .hero-headline span {
+            color: var(--orange);
+        }
+
+        .hero-content .hero-tagline {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+
         .hero-description {
             max-width: 560px;
             color: rgba(243, 240, 231, 0.7);
             font-size: 0.95rem;
-            margin-bottom: 32px;
+            margin-bottom: 20px;
         }
+
+        .hero-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            margin-bottom: 24px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(243, 240, 231, 0.55);
+        }
+        .hero-keywords .sep {
+            color: var(--orange);
+        }
+
+        .hero-cta {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 20px;
+        }
+
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -366,6 +341,7 @@
             border-radius: 40px;
             transition: 0.25s;
             cursor: pointer;
+            border: none;
         }
         .btn-primary {
             background: var(--orange);
@@ -378,11 +354,13 @@
         .btn-outline {
             border: 1px solid rgba(243, 240, 231, 0.3);
             color: var(--cream);
+            background: transparent;
         }
         .btn-outline:hover {
             border-color: var(--orange);
             color: var(--orange);
         }
+
         .hero-profile {
             display: flex;
             flex-direction: column;
@@ -471,6 +449,37 @@
             font-weight: 600;
             font-size: 0.9rem;
             color: var(--green);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 80px 0;
+        }
+        .section-label {
+            color: var(--orange);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .section-label::before {
+            content: "— ";
+        }
+        .section-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            font-weight: 500;
+            color: var(--green);
+            margin-bottom: 24px;
+        }
+        .section-description {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 48px;
         }
 
         /* ===== ABOUT ===== */
@@ -876,7 +885,7 @@
             text-align: center;
         }
 
-        /* ===== BUILDING PROBLEMS – SINGLE IMAGE SLIDER ===== */
+        /* ===== BUILDING PROBLEMS SLIDER ===== */
         .healer-slider-wrapper {
             max-width: 100%;
             margin: 0 auto;
@@ -904,7 +913,7 @@
             left: 0;
             right: 0;
             padding: 40px 20px 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
             text-align: center;
             pointer-events: none;
         }
@@ -938,8 +947,12 @@
             background: var(--orange);
             transform: translateY(-50%) scale(1.05);
         }
-        .healer-prev { left: 20px; }
-        .healer-next { right: 20px; }
+        .healer-prev {
+            left: 20px;
+        }
+        .healer-next {
+            right: 20px;
+        }
         .healer-dots {
             display: flex;
             justify-content: center;
@@ -960,7 +973,7 @@
             transform: scale(1.15);
         }
 
-        /* ===== NEW ACI CERTIFICATE SECTION ===== */
+        /* ===== ACI CERTIFICATES ===== */
         #aci-certificates {
             background: var(--cream);
         }
@@ -1021,8 +1034,75 @@
             transform: translateX(4px);
         }
 
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 920px) {
+        @media (max-width: 1100px) {
+            body {
+                padding-top: 80px;
+            }
+            header {
+                min-height: 80px;
+                padding: 8px 0 6px 0;
+            }
+            .header-nav-row .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 20px;
+                right: 20px;
+                flex-direction: column;
+                background: var(--cream);
+                padding: 20px;
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                gap: 10px;
+                align-items: stretch;
+            }
+            .header-nav-row .nav-links.show {
+                display: flex;
+            }
+            .header-nav-row .nav-links a {
+                font-size: 0.7rem;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--line);
+                text-align: center;
+            }
+            .header-nav-row .nav-links a:last-child {
+                border-bottom: none;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .header-nav-row {
+                justify-content: space-between;
+            }
+            .header-logo-row {
+                padding-top: 2px;
+            }
+            .logo-name {
+                font-size: 1rem;
+            }
+            .logo-role {
+                font-size: 0.5rem;
+            }
+            .logo-mark {
+                width: 30px;
+                height: 30px;
+                flex: 0 0 30px;
+                font-size: 0.65rem;
+            }
+
             .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1073,38 +1153,49 @@
                 height: 34px;
                 font-size: 0.9rem;
             }
-            .healer-prev { left: 10px; }
-            .healer-next { right: 10px; }
-            
+            .healer-prev {
+                left: 10px;
+            }
+            .healer-next {
+                right: 10px;
+            }
             .aci-grid {
                 grid-template-columns: 1fr;
             }
             .badge-grid {
-                grid-template-columns: repeat(4, 1fr); 
+                grid-template-columns: repeat(4, 1fr);
                 gap: 15px;
             }
         }
 
         @media (max-width: 700px) {
-            .logo {
-                flex-basis: auto;
-                width: auto;
-                transform: translateX(-4px);
+            body {
+                padding-top: 72px;
             }
-            .logo-mark {
-                width: 34px;
-                height: 34px;
-                flex-basis: 34px;
+            header {
+                min-height: 72px;
+                padding: 6px 0 4px 0;
+            }
+            .header-nav-row .nav-links {
+                top: 72px;
             }
             .logo-name {
                 font-size: 0.92rem;
-                font-weight: 700;
             }
             .logo-role {
-                font-size: 0.50rem;
+                font-size: 0.46rem;
+            }
+            .logo-mark {
+                width: 28px;
+                height: 28px;
+                flex: 0 0 28px;
+                font-size: 0.6rem;
             }
             .badge-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-content .hero-headline {
+                font-size: clamp(1.8rem, 8vw, 3rem);
             }
         }
 
@@ -1137,32 +1228,47 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
+            .header-nav-row .nav-links a {
+                font-size: 0.65rem;
+            }
         }
 
-        /* ===== REVEAL ANIMATION ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        @media (max-width: 400px) {
+            .logo-name {
+                font-size: 0.78rem;
+            }
+            .logo-role {
+                font-size: 0.4rem;
+                letter-spacing: 0.08em;
+            }
+            .logo-mark {
+                width: 24px;
+                height: 24px;
+                flex: 0 0 24px;
+                font-size: 0.5rem;
+            }
+            .logo {
+                gap: 8px;
+            }
+            header {
+                min-height: 64px;
+                padding: 4px 0 3px 0;
+            }
+            body {
+                padding-top: 64px;
+            }
+            .header-nav-row .nav-links {
+                top: 64px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER — TWO ROWS ===== -->
     <header>
-        <div class="container nav">
-            <a href="#home" class="logo">
-                <div class="logo-mark">RM</div>
-                <div class="logo-text">
-                    <div class="logo-name">Raad Mahmood</div>
-                    <span class="logo-role">MSc Civil Engineer</span>
-                </div>
-            </a>
+        <!-- Row 1: Navigation -->
+        <div class="header-row header-nav-row">
             <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
             <div class="nav-links" id="navLinks">
                 <a href="#home">Home</a>
@@ -1172,46 +1278,48 @@
                 <a href="#expertise">Expertise</a>
                 <a href="#projects">Projects</a>
                 <a href="#building-problems">Building Problems</a>
-                <a href="#aci-certificates">ACI Certificates</a>
+                <a href="#aci-certificates">ACI</a>
                 <a href="#certificates">Certificates</a>
                 <a href="#publications">Publications</a>
                 <a href="#gallery">Gallery</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
+
+        <!-- Row 2: Logo / Name -->
+        <div class="header-row header-logo-row">
+            <a href="#home" class="logo">
+                <div class="logo-mark">RM</div>
+                <div class="logo-text">
+                    <span class="logo-name">Raad Mahmood</span>
+                    <span class="logo-role">MSc Civil Engineer</span>
+                </div>
+            </a>
+        </div>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO (no big name title — it's in the header) ===== -->
     <section class="hero" id="home">
         <div class="container hero-grid">
             <div class="hero-content reveal">
-                <div class="hero-sub" style="letter-spacing: 0.15em; font-size: 0.7rem;">
-                    DESIGN · ANALYZE · BUILD · SUSTAIN
-                </div>
-                <h1 style="font-size: clamp(3.8rem, 8vw, 7.5rem); line-height: 0.85;">
-                    Raad <br /><span>Mahmood</span>
+                <div class="hero-eyebrow">DESIGN · ANALYZE · BUILD · SUSTAIN</div>
+                <h1 class="hero-headline">
+                    Engineering <br /><span>a better future</span>
                 </h1>
-                <p style="font-size: 1.05rem; font-weight: 600; color: var(--orange); letter-spacing: 0.04em; margin: 12px 0 6px;">
-                    Civil Engineer · MSc Structural Materials
+                <p class="hero-tagline">Civil Engineer · MSc Structural Materials</p>
+                <p class="hero-description">
+                    Advanced Materials Research &amp; Sustainable Concrete — combining engineering practice with materials science for resilient, low‑carbon construction.
                 </p>
-                <p class="hero-description" style="max-width: 600px; margin-bottom: 4px; font-size: 0.95rem;">
-                    Advanced Materials Research &amp; Sustainable Concrete
-                </p>
-                <p class="hero-description" style="max-width: 600px; margin-bottom: 18px; font-size: 0.95rem;">
-                    Structural Design Performance &amp; Green Solutions
-                </p>
-                <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 28px; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(243,240,231,0.55);">
+                <div class="hero-keywords">
                     <span>Structural Design</span>
-                    <span style="color: var(--orange);">|</span>
+                    <span class="sep">|</span>
                     <span>Materials Research</span>
-                    <span style="color: var(--orange);">|</span>
-                    <span>Waterproofing &amp; Construction Chemicals</span>
-                    <span style="color: var(--orange);">|</span>
+                    <span class="sep">|</span>
+                    <span>Waterproofing &amp; Chemicals</span>
+                    <span class="sep">|</span>
                     <span>Sustainable Construction</span>
                 </div>
-                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 24px;">
-                    Engineering A Better Future
-                </p>
+                <p class="hero-cta">Engineering a better future</p>
                 <div class="hero-buttons">
                     <a href="#research" class="btn btn-primary">Research <i class="fas fa-arrow-down"></i></a>
                     <a href="#projects" class="btn btn-outline">Projects</a>
@@ -1364,13 +1472,12 @@
         </div>
     </section>
 
-    <!-- ===== BUILDING PROBLEMS HEALER ===== -->
+    <!-- ===== BUILDING PROBLEMS ===== -->
     <section id="building-problems" style="background:var(--cream-dark);">
         <div class="container">
             <div class="section-label">06 / Building Problems Healer</div>
             <h2 class="section-title">Waterproofing jobs <br />&amp; application projects.</h2>
             <p class="section-description">Professional waterproofing and construction chemical solutions – real projects, real results.</p>
-
             <div class="healer-slider-wrapper">
                 <div class="healer-slide-card" id="healerSlideCard">
                     <img id="healerSlideImage" src="images/healer-1.jpg" alt="Waterproofing Project" />
@@ -1385,17 +1492,15 @@
         </div>
     </section>
 
-    <!-- ===== NEW ACI CERTIFICATE PROGRAM ===== -->
+    <!-- ===== ACI CERTIFICATES ===== -->
     <section id="aci-certificates">
         <div class="container">
             <div class="section-label">07 / ACI Certificate Program</div>
             <h2 class="section-title">ACI University <br />Specializations &amp; Credentials.</h2>
             <p class="section-description">Professional development and specializations through the American Concrete Institute (ACI) University program.</p>
-
             <div class="aci-grid">
                 <div class="aci-badges">
                     <div class="badge-grid">
-                        <!-- Updated extensions to .png to match your uploaded files -->
                         <img src="images/aci/aci-1.png" alt="Low-Carbon Concrete Fundamentals" />
                         <img src="images/aci/aci-2.png" alt="Low-Carbon Concrete Quantification" />
                         <img src="images/aci/aci-3.png" alt="GFRP Bars Design" />
@@ -1457,30 +1562,12 @@
             <h2 class="section-title">Engineering in practice.</h2>
             <p class="section-description">Laboratory research, materials testing, and construction engineering work.</p>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/gallery-1.jpg" alt="Geopolymer research" />
-                    <div class="gallery-label">Geopolymer Research</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/gallery-2.jpg" alt="Materials testing" />
-                    <div class="gallery-label">Materials Testing</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/gallery-3.jpg" alt="Concrete technology" />
-                    <div class="gallery-label">Concrete Technology</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/gallery-4.jpg" alt="Microstructure" />
-                    <div class="gallery-label">Microstructure</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/gallery-5.jpg" alt="Construction materials" />
-                    <div class="gallery-label">Construction Materials</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/gallery-6.jpg" alt="Engineering practice" />
-                    <div class="gallery-label">Engineering Practice</div>
-                </div>
+                <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Geopolymer research" /><div class="gallery-label">Geopolymer Research</div></div>
+                <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Materials testing" /><div class="gallery-label">Materials Testing</div></div>
+                <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Concrete technology" /><div class="gallery-label">Concrete Technology</div></div>
+                <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Microstructure" /><div class="gallery-label">Microstructure</div></div>
+                <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Construction materials" /><div class="gallery-label">Construction Materials</div></div>
+                <div class="gallery-item"><img src="images/gallery-6.jpg" alt="Engineering practice" /><div class="gallery-label">Engineering Practice</div></div>
             </div>
         </div>
     </section>
@@ -1571,7 +1658,7 @@
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                const top = section.offsetTop - 130;
+                const top = section.offsetTop - 140;
                 if (window.scrollY >= top) current = section.getAttribute('id');
             });
             navItems.forEach(item => {
@@ -1580,21 +1667,17 @@
             });
         });
 
-        // ===== BLOCK RIGHT-CLICK ON ALL IMAGES =====
+        // Block right-click on images
         document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                return false;
-            });
+            img.addEventListener('contextmenu', (e) => { e.preventDefault();
+                return false; });
         });
         document.querySelectorAll('.gallery-item, .profile-image, .hero').forEach(el => {
-            el.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                return false;
-            });
+            el.addEventListener('contextmenu', (e) => { e.preventDefault();
+                return false; });
         });
 
-        // Prevent keyboard shortcuts (Ctrl+S, Ctrl+U)
+        // Prevent Ctrl+S, Ctrl+U
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && (e.key === 's' || e.key === 'u' || e.key === 'S' || e.key === 'U')) {
                 e.preventDefault();
@@ -1605,6 +1688,7 @@
         // ===== VISITOR COUNTER =====
         const COUNTER_KEY = 'raad-mahmood-portfolio-civileng-2026';
         const counterElement = document.getElementById('visitorCount');
+
         function shouldCountVisit() {
             const today = new Date().toDateString();
             const lastVisit = localStorage.getItem('rm_last_visit');
@@ -1612,10 +1696,11 @@
             localStorage.setItem('rm_last_visit', today);
             return true;
         }
+
         async function updateVisitorCount() {
-            const endpoint = shouldCountVisit()
-                ? `https://countapi.mileshilliard.com/api/v1/hit/${COUNTER_KEY}`
-                : `https://countapi.mileshilliard.com/api/v1/get/${COUNTER_KEY}`;
+            const endpoint = shouldCountVisit() ?
+                `https://countapi.mileshilliard.com/api/v1/hit/${COUNTER_KEY}` :
+                `https://countapi.mileshilliard.com/api/v1/get/${COUNTER_KEY}`;
             try {
                 const response = await fetch(endpoint);
                 const data = await response.json();
@@ -1627,7 +1712,7 @@
         }
         updateVisitorCount();
 
-        // ===== BUILDING PROBLEMS HEALER SLIDER =====
+        // ===== BUILDING PROBLEMS SLIDER =====
         const healerData = [
             { title: 'Basement Waterproofing - Commercial Building', img: 'images/healer-1.jpg' },
             { title: 'Roof Insulation & Waterproofing Application', img: 'images/healer-2.jpg' },
@@ -1660,7 +1745,6 @@
             healerImage.src = data.img;
             healerImage.alt = data.title;
             healerTitle.textContent = data.title;
-            
             healerDots.forEach((dot, idx) => {
                 dot.classList.toggle('active', idx === currentHealerSlide);
             });
