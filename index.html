@@ -444,18 +444,19 @@
         .hero-ticker-track img {
             /* 🔴 FIXED HEIGHT so tiny source files (e.g. 20px logos) get scaled UP too,
                not just capped when large. height:auto/max-height only shrinks big images. */
-            height: 48px;         /* every logo renders at this height regardless of native size */
+            height: 62px;         /* every logo renders at this height regardless of native size */
             width: auto;          /* width scales proportionally, no distortion */
-            max-width: 140px; 
+            max-width: 170px; 
             object-fit: contain; /* Keeps shapes pristine even if native dimensions vary wildly */
             
-            filter: grayscale(100%) contrast(1.05) brightness(0.72) opacity(0.82);
+            filter: none; /* full color logos, no grayscale */
+            opacity: 0.92;
             transition: 0.3s ease;
             flex-shrink: 0;
             display: block;
         }
         .hero-ticker-track img:hover {
-            filter: grayscale(0%) brightness(1) opacity(1);
+            opacity: 1;
             transform: scale(1.08); 
         }
         @keyframes tickerScroll {
@@ -1182,16 +1183,16 @@
 
             /* Ticker remains a compact card on tablet */
             .hero-ticker {
-                min-height: 76px;
+                height: 92px;
                 padding: 11px 14px;
                 gap: 12px;
             }
             .hero-ticker-track {
-                gap: 10px 22px;
+                gap: 30px;
             }
             .hero-ticker-track img {
-                height: 28px;
-                max-width: 70px;
+                height: 50px;
+                max-width: 120px;
             }
 
             .about-grid,
@@ -1269,36 +1270,30 @@
             }
 
             .hero-ticker {
-                min-height: 92px;
+                height: 100px;
                 margin: 5px auto 14px;
                 padding: 10px 12px;
                 grid-template-columns: 1fr;
-                gap: 7px;
+                grid-template-rows: auto 1fr;
+                gap: 6px;
                 text-align: center;
             }
             .hero-ticker-label {
-                min-height: auto;
+                height: auto;
                 justify-content: center;
-                padding: 0 0 7px;
+                padding: 0 0 6px;
                 border-right: none;
                 border-bottom: 1px solid rgba(231, 227, 216, 0.35);
-                font-size: 0.45rem;
+                font-size: 0.5rem;
             }
             .hero-ticker-track {
-                min-height: 34px;
-                gap: 8px 14px;
-                justify-content: center;
-                flex-wrap: wrap;
-                animation: none;
-                width: 100%;
+                gap: 28px;
+                animation-duration: 20s;
+                /* keep scrolling on mobile too — no more wrap/animation:none */
             }
             .hero-ticker-track img {
-                height: 24px;
-                max-width: 56px;
-            }
-            .hero-ticker-wrapper::after,
-            .hero-ticker-wrapper::before {
-                display: none;
+                height: 42px;
+                max-width: 100px;
             }
 
             section {
@@ -1355,15 +1350,16 @@
             }
 
             .hero-ticker-track {
-                gap: 7px 10px;
-                row-gap: 7px;
+                gap: 20px;
+                animation-duration: 16s;
             }
             .hero-ticker-track img {
-                height: 20px;
-                max-width: 44px;
+                height: 34px;
+                max-width: 80px;
             }
             .hero-ticker {
-                padding: 4px 0;
+                height: 88px;
+                padding: 8px 10px;
                 margin-bottom: 12px;
             }
 
