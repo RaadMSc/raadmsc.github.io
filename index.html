@@ -390,8 +390,8 @@
             margin: 0;
             padding: 0 16px 0 2px;
             border-right: 1px solid rgba(231, 227, 216, 0.45);
-            font-size: 1rem;
-            font-weight: 900;
+            font-size: 0.75rem;
+            font-weight: 800;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: rgba(243, 240, 231, 0.88);
@@ -1865,7 +1865,8 @@
         }
 
         function nextHealerSlide() {
-            goToHealerSlide((currentHealerSlide + 1) % healerData.length);
+            goToHealerSlide((currentHealerSlide +
+            1) % healerData.length);
         }
 
         function prevHealerSlide() {
