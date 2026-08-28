@@ -442,10 +442,10 @@
             will-change: transform;
         }
         .hero-ticker-track img {
-            /* 🔴 REVISED FOR RAW/UNRESIZED IMAGES */
-            height: auto;        /* Reads your uploaded image's native height aspect ratio */
-            max-height: 55px;    /* Caps large files safely so they fit perfectly in the middle */
-            width: auto;         /* Automatically scales the width to prevent squishing or distortion */
+            /* 🔴 FIXED HEIGHT so tiny source files (e.g. 20px logos) get scaled UP too,
+               not just capped when large. height:auto/max-height only shrinks big images. */
+            height: 48px;         /* every logo renders at this height regardless of native size */
+            width: auto;          /* width scales proportionally, no distortion */
             max-width: 140px; 
             object-fit: contain; /* Keeps shapes pristine even if native dimensions vary wildly */
             
@@ -1458,6 +1458,7 @@
                         <div class="hero-ticker-track">
                             <!-- Set 1 -->
                             <img src="images/cert-logos/aci.png" alt="ACI" loading="lazy" />
+                            <img src="images/cert-logos/astm.png" alt="ASTM" loading="lazy" />
                             <img src="images/cert-logos/coursera.png" alt="Coursera" loading="lazy" />
                             <img src="images/cert-logos/sika.png" alt="Sika" loading="lazy" />
                             <img src="images/cert-logos/osha.png" alt="OSHA" loading="lazy" />
@@ -1466,6 +1467,7 @@
                             <img src="images/cert-logos/iso.png" alt="ISO" loading="lazy" />
                             <!-- Set 2 (duplicate for seamless mid-point) -->
                             <img src="images/cert-logos/aci.png" alt="ACI" loading="lazy" />
+                            <img src="images/cert-logos/astm.png" alt="ASTM" loading="lazy" />
                             <img src="images/cert-logos/coursera.png" alt="Coursera" loading="lazy" />
                             <img src="images/cert-logos/sika.png" alt="Sika" loading="lazy" />
                             <img src="images/cert-logos/osha.png" alt="OSHA" loading="lazy" />
@@ -1474,6 +1476,7 @@
                             <img src="images/cert-logos/iso.png" alt="ISO" loading="lazy" />
                             <!-- Set 3 (extra safety for very wide screens) -->
                             <img src="images/cert-logos/aci.png" alt="ACI" loading="lazy" />
+                            <img src="images/cert-logos/astm.png" alt="ASTM" loading="lazy" />
                             <img src="images/cert-logos/coursera.png" alt="Coursera" loading="lazy" />
                             <img src="images/cert-logos/sika.png" alt="Sika" loading="lazy" />
                             <img src="images/cert-logos/osha.png" alt="OSHA" loading="lazy" />
